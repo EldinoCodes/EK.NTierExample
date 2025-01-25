@@ -9,4 +9,4 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-:r .\dbo\Data\WeatherSummary.Data.sql
+:r .\dbo\Data\Address.Data.sql

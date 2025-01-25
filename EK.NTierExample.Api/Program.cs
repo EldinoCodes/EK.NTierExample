@@ -1,7 +1,8 @@
 
 using EK.NTierExample.Api.Data.Context;
-using EK.NTierExample.Api.Data.Repositories.WeatherForecasts;
-using EK.NTierExample.Api.Services.WeatherForecasts;
+using EK.NTierExample.Api.Data.Repositories.Addresses;
+using EK.NTierExample.Api.Services.Addresses;
+using System.Security.Principal;
 
 namespace EK.NTierExample.Api;
 
@@ -11,10 +12,21 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        builder.Services
+            .AddTransient<IPrincipal>(s =>
+            {
+                var principal = s.GetService<IHttpContextAccessor>()?.HttpContext?.User;
+                if (!principal?.Claims?.Any() ?? false) principal = null;
+
+                principal ??= new GenericPrincipal(new GenericIdentity("Anonymous"), []);
+
+                return principal;
+            });
+
         // Add services to the container.
         builder.Services.AddScoped<INTierExampleContext, NTierExampleContext>();
-        builder.Services.AddScoped<IWeatherSummaryRepository, WeatherSummaryRepository>();
-        builder.Services.AddScoped<IWeatherForecastService, WeatherForecastService>();
+        builder.Services.AddScoped<IAddressRepository, AddressRepository>();
+        builder.Services.AddScoped<IAddressService, AddressService>();
 
 
         builder.Services.AddControllers();

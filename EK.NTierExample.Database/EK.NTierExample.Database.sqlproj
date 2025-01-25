@@ -61,13 +61,13 @@
     <Folder Include="dbo\Data" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="dbo\Tables\WeatherSummary.sql" />
+    <Build Include="dbo\Tables\Address.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="PostDeployment.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="dbo\Data\WeatherSummary.Data.sql" />
+    <None Include="dbo\Data\Address.Data.sql" />
     <None Include="EK.NTierExample.Database.publish.xml" />
   </ItemGroup>
 </Project>

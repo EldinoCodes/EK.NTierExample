@@ -1,6 +1,6 @@
-@EK.NTierExample.Api_HostAddress = http://localhost:5039
+@EK.NTierExample.Api_HostAddress = http://localhost:5000
 
-GET {{EK.NTierExample.Api_HostAddress}}/weatherforecast/
+GET {{EK.NTierExample.Api_HostAddress}}/addresses/
 Accept: application/json
 
 ###
